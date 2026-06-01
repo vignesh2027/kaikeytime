@@ -1,0 +1,116 @@
+{
+  "name": "keystrand",
+  "displayName": "Keystrand — Privacy-First Coding Analytics",
+  "description": "Track your coding activity 100% locally. Beautiful shareable Strand cards. No account, no cloud, no data ever leaves your machine.",
+  "version": "1.0.0",
+  "publisher": "vignesh2027",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other", "Visualization"],
+  "keywords": [
+    "coding analytics",
+    "productivity",
+    "time tracking",
+    "privacy",
+    "local",
+    "wakatime alternative",
+    "developer stats",
+    "coding streak",
+    "ai detection",
+    "shareable card"
+  ],
+  "icon": "resources/icon.png",
+  "galleryBanner": {
+    "color": "#0f0f1a",
+    "theme": "dark"
+  },
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "keystrand.openDashboard",
+        "title": "Keystrand: Open Dashboard",
+        "category": "Keystrand"
+      },
+      {
+        "command": "keystrand.generateStrand",
+        "title": "Keystrand: Generate Strand Card",
+        "category": "Keystrand"
+      },
+      {
+        "command": "keystrand.exportData",
+        "title": "Keystrand: Export My Data (JSON)",
+        "category": "Keystrand"
+      },
+      {
+        "command": "keystrand.resetData",
+        "title": "Keystrand: Reset All Data",
+        "category": "Keystrand"
+      }
+    ],
+    "configuration": {
+      "title": "Keystrand",
+      "properties": {
+        "keystrand.idleThresholdSeconds": {
+          "type": "number",
+          "default": 120,
+          "minimum": 30,
+          "maximum": 600,
+          "description": "Seconds of inactivity before considered idle. Lower = more precise active time."
+        },
+        "keystrand.trackLanguages": {
+          "type": "boolean",
+          "default": true,
+          "description": "Track time and lines per programming language."
+        },
+        "keystrand.trackProjects": {
+          "type": "boolean",
+          "default": true,
+          "description": "Track time and lines per project/workspace."
+        },
+        "keystrand.strandTheme": {
+          "type": "string",
+          "enum": ["dark", "neon", "ocean", "forest"],
+          "enumDescriptions": [
+            "Dark slate with purple accents",
+            "Black with neon cyan/green glow",
+            "Deep ocean blue gradient",
+            "Forest green gradient"
+          ],
+          "default": "dark",
+          "description": "Color theme for generated Strand cards."
+        },
+        "keystrand.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the live Pulse status bar item."
+        },
+        "keystrand.aiDetectionThreshold": {
+          "type": "number",
+          "default": 5,
+          "minimum": 2,
+          "maximum": 50,
+          "description": "Minimum number of lines inserted at once to be classified as likely AI-assisted."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vignesh2027/keystrand"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^18.0.0",
+    "typescript": "^5.1.0"
+  }
+}
