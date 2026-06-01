@@ -1,7 +1,7 @@
 {
   "name": "kaikeytime",
   "displayName": "KaikeyTime — Privacy-First Coding Analytics",
-  "description": "Track your coding activity 100% locally. Beautiful shareable cards. No account, no cloud, no data ever leaves your machine. AI assist ratio detection built-in.",
+  "description": "Know exactly how you code. Tracks focus time, languages, streaks & AI-assisted lines — 100% on your machine. No account. No cloud. Share beautiful Strand cards on LinkedIn or X.",
   "version": "1.0.0",
   "publisher": "vignesh2027",
   "engines": {
