@@ -14,15 +14,15 @@ export class StrandGenerator {
         { label: '$(graph) This Week', description: 'Weekly summary', value: 'weekly' as StrandPeriod },
         { label: '$(history) This Month', description: 'Monthly summary', value: 'monthly' as StrandPeriod },
       ],
-      { title: 'Keystrand: Generate Strand Card', placeHolder: 'Choose period' }
+      { title: 'KaikeyTime: Generate Strand Card', placeHolder: 'Choose period' }
     );
     if (!period) return;
 
-    const cfg = vscode.workspace.getConfiguration('keystrand');
+    const cfg = vscode.workspace.getConfiguration('kaikeytime');
     const theme = (cfg.get<string>('strandTheme') ?? 'dark') as StrandTheme;
 
     const panel = vscode.window.createWebviewPanel(
-      'keystrand.strand',
+      'kaikeytime.strand',
       `Strand — ${period.label.replace(/\$\(\w+\)\s*/, '')}`,
       vscode.ViewColumn.Beside,
       { enableScripts: true, localResourceRoots: [] }
@@ -34,7 +34,7 @@ export class StrandGenerator {
     panel.webview.onDidReceiveMessage(async msg => {
       if (msg.type === 'savePng') {
         const uri = await vscode.window.showSaveDialog({
-          defaultUri: vscode.Uri.file(path.join(require('os').homedir(), 'Desktop', `keystrand-strand.png`)),
+          defaultUri: vscode.Uri.file(path.join(require('os').homedir(), 'Desktop', `kaikeytime-strand.png`)),
           filters: { 'PNG Image': ['png'] },
           saveLabel: 'Save Strand Card',
         });
@@ -50,7 +50,7 @@ export class StrandGenerator {
           await vscode.env.openExternal(uri);
         }
       } else if (msg.type === 'changeTheme') {
-        await vscode.workspace.getConfiguration('keystrand').update('strandTheme', msg.theme, true);
+        await vscode.workspace.getConfiguration('kaikeytime').update('strandTheme', msg.theme, true);
         const newData = StrandGenerator.buildData(storage, period.value);
         panel.webview.html = buildStrandHtml(newData, msg.theme as StrandTheme);
       }

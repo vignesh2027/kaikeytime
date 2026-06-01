@@ -193,7 +193,7 @@ export function buildDashboardHtml(
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Keystrand Dashboard</title>
+<title>KaikeyTime Dashboard</title>
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
@@ -414,9 +414,9 @@ export function buildDashboardHtml(
   <div class="footer animate">
     <span class="privacy-footer">
       <span class="lock-icon"></span>
-      All data stored locally at <code>~/.vscode/.../keystrand-data.json</code> — never sent anywhere.
+      All data stored locally at <code>~/.vscode/.../kaikeytime-data.json</code> — never sent anywhere.
     </span>
-    <span>Keystrand v1.0.0 · <span style="color:var(--accent2)">lifetime: ${fmtTime(lifetimeSeconds)}</span></span>
+    <span>KaikeyTime v1.0.0 · <span style="color:var(--accent2)">lifetime: ${fmtTime(lifetimeSeconds)}</span></span>
   </div>
 
 </div>

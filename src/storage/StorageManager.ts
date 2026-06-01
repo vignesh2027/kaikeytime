@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { ActivityEvent, DayStats, StoredData } from '../tracker/types';
 
-const DATA_FILE = 'keystrand-data.json';
+const DATA_FILE = 'kaikeytime-data.json';
 const VERSION = 1;
 
 export function toDateStr(d = new Date()): string {
@@ -69,7 +69,7 @@ export class StorageManager {
       await vscode.workspace.fs.writeFile(this.dataPath, raw);
       this.dirty = false;
     } catch (err) {
-      console.error('[Keystrand] Save failed:', err);
+      console.error('[KaikeyTime] Save failed:', err);
     }
   }
 

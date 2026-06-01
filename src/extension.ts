@@ -9,7 +9,7 @@ let sessionTickInterval: ReturnType<typeof setInterval> | undefined;
 let sessionStartTime = 0;
 
 export async function activate(context: vscode.ExtensionContext) {
-  const cfg = vscode.workspace.getConfiguration('keystrand');
+  const cfg = vscode.workspace.getConfiguration('kaikeytime');
 
   // ── Storage ──────────────────────────────────────────────────────────
   const storage = new StorageManager(context.globalStorageUri);
@@ -66,8 +66,8 @@ export async function activate(context: vscode.ExtensionContext) {
   // ── Configuration change handler ──────────────────────────────────────
   context.subscriptions.push(
     vscode.workspace.onDidChangeConfiguration(e => {
-      if (!e.affectsConfiguration('keystrand')) return;
-      const updated = vscode.workspace.getConfiguration('keystrand');
+      if (!e.affectsConfiguration('kaikeytime')) return;
+      const updated = vscode.workspace.getConfiguration('kaikeytime');
       tracker.updateIdleThreshold((updated.get<number>('idleThresholdSeconds') ?? 120) * 1000);
       tracker.updateAiThreshold(updated.get<number>('aiDetectionThreshold') ?? 5);
       pulse.updateVisibility(updated.get<boolean>('showStatusBar') !== false);
@@ -76,43 +76,43 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // ── Commands ──────────────────────────────────────────────────────────
   context.subscriptions.push(
-    vscode.commands.registerCommand('keystrand.openDashboard', () => {
+    vscode.commands.registerCommand('kaikeytime.openDashboard', () => {
       DashboardPanel.createOrShow(context, storage);
     }),
 
-    vscode.commands.registerCommand('keystrand.generateStrand', () => {
+    vscode.commands.registerCommand('kaikeytime.generateStrand', () => {
       StrandGenerator.show(context, storage);
     }),
 
-    vscode.commands.registerCommand('keystrand.exportData', async () => {
+    vscode.commands.registerCommand('kaikeytime.exportData', async () => {
       const json = await storage.exportJson();
       const doc = await vscode.workspace.openTextDocument({
         content: json,
         language: 'json',
       });
       await vscode.window.showTextDocument(doc);
-      vscode.window.showInformationMessage('Keystrand: Your data is displayed above. Save it anywhere you like.');
+      vscode.window.showInformationMessage('KaikeyTime: Your data is displayed above. Save it anywhere you like.');
     }),
 
-    vscode.commands.registerCommand('keystrand.resetData', async () => {
+    vscode.commands.registerCommand('kaikeytime.resetData', async () => {
       const confirm = await vscode.window.showWarningMessage(
-        'Reset all Keystrand data? This cannot be undone.',
+        'Reset all KaikeyTime data? This cannot be undone.',
         { modal: true },
         'Reset Everything'
       );
       if (confirm === 'Reset Everything') {
         await storage.resetAll();
-        vscode.window.showInformationMessage('Keystrand: All data has been reset.');
+        vscode.window.showInformationMessage('KaikeyTime: All data has been reset.');
       }
     })
   );
 
   // ── First-run welcome ─────────────────────────────────────────────────
-  const isNew = !context.globalState.get('keystrand.welcomed');
+  const isNew = !context.globalState.get('kaikeytime.welcomed');
   if (isNew) {
-    await context.globalState.update('keystrand.welcomed', true);
+    await context.globalState.update('kaikeytime.welcomed', true);
     const action = await vscode.window.showInformationMessage(
-      '✨ Keystrand is running — tracking your coding locally. No account needed, no data leaves your machine.',
+      '✨ KaikeyTime is running — tracking your coding locally. No account needed, no data leaves your machine.',
       'Open Dashboard'
     );
     if (action === 'Open Dashboard') {

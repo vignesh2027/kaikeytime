@@ -61,7 +61,7 @@ export function buildStrandHtml(data: StrandData, theme: Theme): string {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Keystrand Strand Card</title>
+<title>KaikeyTime Strand Card</title>
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   body{
@@ -169,7 +169,7 @@ function drawCard(theme) {
   // --- Logo / header ---
   ctx.fillStyle = t.text;
   ctx.font = 'bold 28px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-  ctx.fillText('Keystrand', 56, 72);
+  ctx.fillText('KaikeyTime', 56, 72);
 
   // Lock badge
   ctx.fillStyle = t.cardBg;
@@ -316,7 +316,7 @@ function drawCard(theme) {
   ctx.fillText('made with', 56, H - 20);
   ctx.fillStyle = t.accent1;
   ctx.font = 'bold 14px sans-serif';
-  ctx.fillText('Keystrand', 56 + ctx.measureText('made with ').width, H - 20);
+  ctx.fillText('KaikeyTime', 56 + ctx.measureText('made with ').width, H - 20);
   ctx.fillStyle = t.muted;
   ctx.font = '12px sans-serif';
   ctx.textAlign = 'right';

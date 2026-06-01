@@ -1,28 +1,19 @@
-name: Publish to VS Code Marketplace
+name: Publish KaikeyTime to VS Code Marketplace
 
 on:
   push:
     tags:
-      - 'v*'          # triggers on v1.0.0, v1.1.0, etc.
-  workflow_dispatch:  # allows manual trigger from GitHub Actions UI
+      - 'v*'
+  workflow_dispatch:
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Compile TypeScript
-        run: npm run compile
-
-      - name: Publish to VS Code Marketplace
-        run: npx @vscode/vsce publish --allow-missing-repository -p ${{ secrets.VSCE_PAT }}
+      - run: npm ci
+      - run: npm run compile
+      - run: npx @vscode/vsce publish --allow-missing-repository -p ${{ secrets.VSCE_PAT }}

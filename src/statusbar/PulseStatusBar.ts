@@ -19,8 +19,8 @@ export class PulseStatusBar {
       vscode.StatusBarAlignment.Left,
       100
     );
-    this.item.command = 'keystrand.openDashboard';
-    this.item.name = 'Keystrand Pulse';
+    this.item.command = 'kaikeytime.openDashboard';
+    this.item.name = 'KaikeyTime Pulse';
   }
 
   show(): void {
@@ -50,7 +50,7 @@ export class PulseStatusBar {
     const streakText = streak > 0 ? ` · 🔥${streak}d` : '';
     this.item.text = `$(clock) ${time}${streakText}`;
     this.item.tooltip = new vscode.MarkdownString(
-      `**Keystrand Pulse** — Click to open dashboard\n\n` +
+      `**KaikeyTime Pulse** — Click to open dashboard\n\n` +
       `Today: **${time}** active  \n` +
       `Streak: **${streak} day${streak !== 1 ? 's' : ''}**  \n` +
       `Lines added: **${today.linesAdded.toLocaleString()}**  \n` +

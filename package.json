@@ -1,7 +1,7 @@
 {
-  "name": "keystrand",
-  "displayName": "Keystrand — Privacy-First Coding Analytics",
-  "description": "Track your coding activity 100% locally. Beautiful shareable Strand cards. No account, no cloud, no data ever leaves your machine.",
+  "name": "kaikeytime",
+  "displayName": "KaikeyTime — Privacy-First Coding Analytics",
+  "description": "Track your coding activity 100% locally. Beautiful shareable cards. No account, no cloud, no data ever leaves your machine. AI assist ratio detection built-in.",
   "version": "1.0.0",
   "publisher": "vignesh2027",
   "engines": {
@@ -18,59 +18,66 @@
     "developer stats",
     "coding streak",
     "ai detection",
-    "shareable card"
+    "shareable card",
+    "code stats",
+    "focus time"
   ],
   "icon": "resources/icon.png",
   "galleryBanner": {
-    "color": "#0f0f1a",
+    "color": "#0a0a14",
     "theme": "dark"
   },
   "activationEvents": ["onStartupFinished"],
   "main": "./out/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vignesh2027/keystrand"
+  },
+  "license": "MIT",
   "contributes": {
     "commands": [
       {
-        "command": "keystrand.openDashboard",
-        "title": "Keystrand: Open Dashboard",
-        "category": "Keystrand"
+        "command": "kaikeytime.openDashboard",
+        "title": "KaikeyTime: Open Dashboard",
+        "category": "KaikeyTime"
       },
       {
-        "command": "keystrand.generateStrand",
-        "title": "Keystrand: Generate Strand Card",
-        "category": "Keystrand"
+        "command": "kaikeytime.generateStrand",
+        "title": "KaikeyTime: Generate Strand Card",
+        "category": "KaikeyTime"
       },
       {
-        "command": "keystrand.exportData",
-        "title": "Keystrand: Export My Data (JSON)",
-        "category": "Keystrand"
+        "command": "kaikeytime.exportData",
+        "title": "KaikeyTime: Export My Data (JSON)",
+        "category": "KaikeyTime"
       },
       {
-        "command": "keystrand.resetData",
-        "title": "Keystrand: Reset All Data",
-        "category": "Keystrand"
+        "command": "kaikeytime.resetData",
+        "title": "KaikeyTime: Reset All Data",
+        "category": "KaikeyTime"
       }
     ],
     "configuration": {
-      "title": "Keystrand",
+      "title": "KaikeyTime",
       "properties": {
-        "keystrand.idleThresholdSeconds": {
+        "kaikeytime.idleThresholdSeconds": {
           "type": "number",
           "default": 120,
           "minimum": 30,
           "maximum": 600,
           "description": "Seconds of inactivity before considered idle. Lower = more precise active time."
         },
-        "keystrand.trackLanguages": {
+        "kaikeytime.trackLanguages": {
           "type": "boolean",
           "default": true,
           "description": "Track time and lines per programming language."
         },
-        "keystrand.trackProjects": {
+        "kaikeytime.trackProjects": {
           "type": "boolean",
           "default": true,
           "description": "Track time and lines per project/workspace."
         },
-        "keystrand.strandTheme": {
+        "kaikeytime.strandTheme": {
           "type": "string",
           "enum": ["dark", "neon", "ocean", "forest"],
           "enumDescriptions": [
@@ -82,12 +89,12 @@
           "default": "dark",
           "description": "Color theme for generated Strand cards."
         },
-        "keystrand.showStatusBar": {
+        "kaikeytime.showStatusBar": {
           "type": "boolean",
           "default": true,
           "description": "Show the live Pulse status bar item."
         },
-        "keystrand.aiDetectionThreshold": {
+        "kaikeytime.aiDetectionThreshold": {
           "type": "number",
           "default": 5,
           "minimum": 2,
@@ -103,11 +110,6 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vignesh2027/keystrand"
-  },
-  "license": "MIT",
   "devDependencies": {
     "@types/vscode": "^1.80.0",
     "@types/node": "^18.0.0",

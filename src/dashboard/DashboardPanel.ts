@@ -4,7 +4,7 @@ import { generateInsights } from '../insights/InsightsEngine';
 import { buildDashboardHtml } from './dashboardContent';
 
 export class DashboardPanel {
-  static readonly viewType = 'keystrand.dashboard';
+  static readonly viewType = 'kaikeytime.dashboard';
   private static current: DashboardPanel | undefined;
 
   private panel: vscode.WebviewPanel;
@@ -21,7 +21,7 @@ export class DashboardPanel {
 
     const panel = vscode.window.createWebviewPanel(
       DashboardPanel.viewType,
-      'Keystrand Dashboard',
+      'KaikeyTime Dashboard',
       column,
       {
         enableScripts: true,
