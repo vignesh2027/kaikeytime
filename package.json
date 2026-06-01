@@ -2,7 +2,7 @@
   "name": "kaikeytime",
   "displayName": "KaikeyTime — Privacy-First Coding Analytics",
   "description": "Know exactly how you code. Tracks focus time, languages, streaks & AI-assisted lines — 100% on your machine. No account. No cloud. Share beautiful Strand cards on LinkedIn or X.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "vignesh2027",
   "engines": {
     "vscode": "^1.80.0"

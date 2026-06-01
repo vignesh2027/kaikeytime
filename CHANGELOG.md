@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.1] — 2026-06-01
+
+### Fixed
+- AI detection off-by-one: threshold now correctly counts lines, not newlines
+
 ## [1.0.0] — 2026-06-01
 
 ### Added
