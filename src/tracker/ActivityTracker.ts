@@ -37,7 +37,8 @@ export class ActivityTracker extends EventEmitter {
           charsAdded += change.text.length;
 
           // Large single-shot insertions are characteristic of AI completions / pastes
-          if (newLineCount >= this.aiLineThreshold || change.text.length >= 300) {
+          // N lines = N-1 newlines; subtract 1 so threshold means "lines", not "newlines"
+          if (newLineCount >= Math.max(1, this.aiLineThreshold - 1) || change.text.length >= 300) {
             isLikelyAI = true;
           }
         }
